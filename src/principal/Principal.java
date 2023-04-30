@@ -30,7 +30,7 @@ public class Principal {
                      }
 
                     } else {
-                        JOptionPane.showMessageDialog(null, "Valor inválido");                
+                        JOptionPane.showMessageDialog(null, "Valor inválido. Asegurate de ingresar solo NUMEROS");                
                     }
                      	break;
         	
@@ -49,7 +49,7 @@ public class Principal {
                  }
 
              } else {
-                 JOptionPane.showMessageDialog(null, "Valor inválido");                
+                 JOptionPane.showMessageDialog(null, "Valor inválido. Asegurate de ingresar solo NUMEROS");                
              }
              break;
         }                
