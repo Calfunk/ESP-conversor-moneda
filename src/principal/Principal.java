@@ -6,64 +6,64 @@ import conversorMonedas.function;
 import conversorTemperatura.functionTemperatura;
 
 public class Principal {
-    public static void main (String[] args) {
+	public static void main(String[] args) {
 
-        function monedas = new function();
-        functionTemperatura temperatura = new functionTemperatura();
-             
-        while(true) {
-        	
-        	String opciones = (JOptionPane.showInputDialog(null, "Seleccione una opción de conversión ", "Menu", JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Conversor de Moneda", "Conversor de Temperatura"}, "Seleccion")).toString();
+		function monedas = new function();
+		functionTemperatura temperatura = new functionTemperatura();
 
-        	switch(opciones) {
-        	case "Conversor de Moneda":
-        		 String input = JOptionPane.showInputDialog("Ingresa la cantidad de dinero que deseas convertir: ");
-                 if(ValidarNumero(input) == true) {
-                     double Minput = Double.parseDouble(input);
-                     monedas.ConvertirMonedas(Minput);
+		while (true) {
+			Object[] opciones = { "Conversor de Moneda", "Conversor de Temperatura" };
+			String seleccion = (String) JOptionPane.showInputDialog(null, "Seleccione una opción de conversión", "Menu",
+					JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 
-                     int respuesta=JOptionPane.showConfirmDialog(null,"¿Deseas realizar otra conversión?");
-                     if (JOptionPane.OK_OPTION == respuesta){
-                     	System.out.println("Selecciona opción Afirmativa");
-                     }else{
-                        	JOptionPane.showMessageDialog(null, "Programa terminado");                         
-                     }
+			if (seleccion != null) {
+				switch (seleccion) {
+				case "Conversor de Moneda":
+					String input = JOptionPane.showInputDialog("Ingresa la cantidad de dinero que deseas convertir: ");
+					if (ValidarNumero(input)) {
+						double Minput = Double.parseDouble(input);
+						monedas.ConvertirMonedas(Minput);
 
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Valor inválido. Asegurate de ingresar solo NUMEROS");                
-                    }
-                     	break;
-        	
+						int respuesta = JOptionPane.showConfirmDialog(null, "¿Deseas realizar otra conversión?");
+						if (respuesta == JOptionPane.NO_OPTION || respuesta == JOptionPane.CLOSED_OPTION) {
+							JOptionPane.showMessageDialog(null, "Programa terminado");
+							return;
+						}
 
-        	 case "Conversor de Temperatura":
-        	 input = JOptionPane.showInputDialog("Ingresa el valor de la temperatura que deseas convertir ");
-             if(ValidarNumero(input) == true) {
-                 double Minput = Double.parseDouble(input);
-                 temperatura.ConvertirTemperatura(Minput);
+					} else {
+						JOptionPane.showMessageDialog(null, "Valor inválido. Asegúrate de ingresar solo números");
+					}
+					break;
 
-                 int respuesta = 0;
-                 respuesta = JOptionPane.showConfirmDialog(null, "¿Desea continuar?");
-                 if((respuesta == 0) && (ValidarNumero(input) == true)) { 
-                 } else {
-                     JOptionPane.showMessageDialog(null, "Programa terminado");                     
-                 }
+				case "Conversor de Temperatura":
+					input = JOptionPane.showInputDialog("Ingresa el valor de la temperatura que deseas convertir: ");
+					if (ValidarNumero(input)) {
+						double Tinput = Double.parseDouble(input);
+						temperatura.ConvertirTemperatura(Tinput);
 
-             } else {
-                 JOptionPane.showMessageDialog(null, "Valor inválido. Asegurate de ingresar solo NUMEROS");                
-             }
-             break;
-        }                
-    }
-               
-  }
-    public static boolean ValidarNumero(String input) {
-        try {
-            double x = Double.parseDouble(input);
-            if(x >= 0 || x < 0);
-                return true;
-            } catch (NumberFormatException e) {
-                return false;
-            }
-    }
+						int respuesta = JOptionPane.showConfirmDialog(null, "¿Deseas realizar otra conversión?");
+						if (respuesta == JOptionPane.NO_OPTION || respuesta == JOptionPane.CLOSED_OPTION) {
+							JOptionPane.showMessageDialog(null, "Programa terminado");
+							return;
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Valor inválido. Asegúrate de ingresar solo números");
+					}
+					break;
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "Programa terminado");
+				return;
+			}
+		}
+	}
+
+	public static boolean ValidarNumero(String input) {
+		try {
+			double x = Double.parseDouble(input);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
 }
-        	

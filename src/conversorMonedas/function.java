@@ -6,45 +6,60 @@ public class function {
 
 	ConvertirMonedas monedas = new ConvertirMonedas();
 	ConvertirMonedasAPesos pesos = new ConvertirMonedasAPesos();
-	
-    public void ConvertirMonedas(double Minput) {
-    	String opcion = (JOptionPane.showInputDialog(null, 
-    			"Elije la moneda a la que deseas convertir tu dinero (precio del mercado: 29/05/2023) ", "Monedas", 
-    			JOptionPane.PLAIN_MESSAGE, null, new Object[] 
-    			{"De Pesos a Dólar", "De Pesos a Euro", "De Pesos a Libras","De Pesos a Yen","De Pesos a Won Coreano","De Dólar a Pesos", "De Euro a Pesos", "De Libras a Pesos","De Yen a Pesos","De Won Coreano a Pesos"}, 
-    			"Seleccion")).toString();
-        switch(opcion) {
-        case "De Pesos a Dólar":
-        	monedas.ConvertirPesosADolares(Minput);
-        	break;
-        case "De Pesos a Euro":
-        	monedas.ConvertirPesosAEuros(Minput);
-        	break;
-        case "De Pesos a Libras":
-        	monedas.ConvertirPesosALibras(Minput);
-        	break;
-        case "De Pesos a Yen":
-        	monedas.ConvertirPesosAYen(Minput);
-        	break;
-        case "De Pesos a Won Coreano":
-        	monedas.ConvertirPesosAWon(Minput);
-        	break;    	    	                          
-        case "De Dólar a Pesos":
-        	pesos.ConvertirDolaresAPesos(Minput);
-        	break;
-        case "De Euro a Pesos":
-        	pesos.ConvertirEurosAPesos(Minput);
-        	break;
-        case "De Libras a Pesos":
-        	pesos.ConvertirLibrasAPesos(Minput);
-        	break;
-        case "De Yen a Pesos":
-        	pesos.ConvertirYenAPesos(Minput);
-        	break;
-        case "De Won Coreano a Pesos":
-            pesos.ConvertirWonAPesos(Minput);
-            break;
-        }      
-    }
-        
+
+	public void ConvertirMonedas(double Minput) {
+		Object seleccion = JOptionPane.showInputDialog(null,
+				"Elije la moneda a la que deseas convertir tu dinero (precio del mercado: 03/06/2023) ", "Monedas",
+				JOptionPane.PLAIN_MESSAGE, null,
+				new Object[] { "De Pesos CLP a Dólar", "De Pesos CLP a Euro", "De Pesos CLP a Libras",
+						"De Pesos CLP a Yen", "De Pesos CLP a Won Coreano", "De Pesos CLP a Pesos COP",
+						"De Dólar a Pesos CLP", "De Euro a Pesos CLP", "De Libras a Pesos CLP", "De Yen a Pesos CLP",
+						"De Won Coreano a Pesos CLP", "De Pesos COP a Pesos CLP" },
+				"Seleccion");
+
+		if (seleccion != null) {
+			String opcion = seleccion.toString();
+			switch (opcion) {
+			case "De Pesos CLP a Dólar":
+				monedas.ConvertirPesosCLPADolares(Minput);
+				break;
+			case "De Pesos CLP a Euro":
+				monedas.ConvertirPesosCLPAEuros(Minput);
+				break;
+			case "De Pesos CLP a Libras":
+				monedas.ConvertirPesosCLPALibras(Minput);
+				break;
+			case "De Pesos CLP a Yen":
+				monedas.ConvertirPesosCLPAYen(Minput);
+				break;
+			case "De Pesos CLP a Won Coreano":
+				monedas.ConvertirPesosCLPAWon(Minput);
+				break;
+			case "De Pesos CLP a Pesos COP":
+				monedas.ConvertirPesosCLPAPesosCOP(Minput);
+				break;
+			case "De Dólar a Pesos CLP":
+				pesos.ConvertirDolaresAPesosCLP(Minput);
+				break;
+			case "De Euro a Pesos CLP":
+				pesos.ConvertirEurosAPesosCLP(Minput);
+				break;
+			case "De Libras a Pesos CLP":
+				pesos.ConvertirLibrasAPesosCLP(Minput);
+				break;
+			case "De Yen a Pesos CLP":
+				pesos.ConvertirYenAPesosCLP(Minput);
+				break;
+			case "De Won Coreano a Pesos CLP":
+				pesos.ConvertirWonAPesosCLP(Minput);
+				break;
+			case "De Pesos COP a Pesos CLP":
+				pesos.ConvertirPesosCOPAPesosCLP(Minput);
+				break;
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "Operación cancelada");
+		}
+	}
+
 }
